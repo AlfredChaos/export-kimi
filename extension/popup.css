@@ -1,0 +1,64 @@
+/* [Input] 弹窗结构节点与状态文本。 */
+/* [Output] 清晰可读的按钮与状态视觉样式。 */
+/* [Pos] 扩展弹窗样式层。 */
+:root {
+  color-scheme: light;
+  --panel-bg: #f5f8ff;
+  --text: #15213b;
+  --muted: #4b5f88;
+  --primary: #0c5adb;
+  --primary-hover: #0a4fbe;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 10% 10%, #ffffff 0%, var(--panel-bg) 60%);
+}
+
+.panel {
+  padding: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.desc {
+  margin: 8px 0 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+button {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+button:not(:disabled):hover {
+  background: var(--primary-hover);
+}
+
+.status {
+  min-height: 20px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  white-space: pre-wrap;
+}

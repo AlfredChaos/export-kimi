@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Kimi History Markdown Exporter",
+  "description": "Export all Kimi chat history into Markdown files and one ZIP package.",
+  "version": "0.1.0",
+  "permissions": ["activeTab", "tabs", "downloads", "scripting"],
+  "host_permissions": ["https://www.kimi.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Kimi Export",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.kimi.com/*"],
+      "js": ["content/runner.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

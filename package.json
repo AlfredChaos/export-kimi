@@ -1,0 +1,14 @@
+{
+  "name": "export-kimi-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "lint": "eslint extension tests --max-warnings=0"
+  },
+  "devDependencies": {
+    "eslint": "^9.22.0",
+    "jsdom": "^26.0.0"
+  }
+}

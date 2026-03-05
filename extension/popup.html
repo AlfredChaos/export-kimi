@@ -1,0 +1,21 @@
+<!-- [Input] 用户在扩展弹窗内点击导出按钮。 -->
+<!-- [Output] 触发后台导出并展示执行状态。 -->
+<!-- [Pos] 插件前端入口视图。 -->
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Kimi Export</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="panel">
+      <h1>Kimi 导出</h1>
+      <p class="desc">一键导出全部历史会话为 Markdown 并打包 ZIP。</p>
+      <button id="export-btn" type="button">Export All</button>
+      <p id="status" class="status" role="status">Ready</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
