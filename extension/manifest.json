@@ -6,7 +6,8 @@
   "permissions": ["activeTab", "tabs", "downloads", "scripting"],
   "host_permissions": ["https://www.kimi.com/*"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "action": {
     "default_title": "Kimi Export",
@@ -17,6 +18,12 @@
       "matches": ["https://www.kimi.com/*"],
       "js": ["content/runner.js"],
       "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["core/*.js", "content/*.js"],
+      "matches": ["https://www.kimi.com/*"]
     }
   ]
 }

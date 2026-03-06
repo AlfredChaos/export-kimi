@@ -5,4 +5,4 @@
 
 ## Files
 - `README.md`: fixtures 目录微架构说明。
-- `chat-page.html`: 历史会话与消息结构最小页面夹具。
+- `chat-page.html`: 含 `/chat/<uuid>` 历史条目、全历史弹层与正文结构的最小页面夹具。

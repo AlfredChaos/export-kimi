@@ -6,8 +6,9 @@
   <body>
     <aside id="sidebar">
       <h2>历史会话</h2>
-      <a href="/chat/alpha">方案讨论</a>
-      <a href="/chat/beta">发布计划</a>
+      <a href="/chat/19be9f88-c422-8f69-8000-0969abfc6911">方案讨论</a>
+      <a href="/chat/29be9f88-c422-8f69-8000-0969abfc6912">发布计划</a>
+      <a href="/chat/history">查看全部</a>
       <button type="button">网站</button>
     </aside>
 
@@ -16,5 +17,30 @@
       <article data-role="user">你好，给我一个计划。</article>
       <article data-role="assistant">可以，先拆解任务，再实现。</article>
     </main>
+
+    <div role="dialog" aria-modal="true" id="history-dialog">
+      <header>
+        <h1>历史会话</h1>
+        <button type="button" aria-label="关闭">×</button>
+      </header>
+      <input type="search" placeholder="搜索历史会话" />
+      <section>
+        <button type="button" data-chat-id="19be9f88-c422-8f69-8000-0969abfc6911">
+          <strong>方案讨论</strong>
+          <span>2026年02月09日</span>
+          <p>作为Anthropic公益部...</p>
+        </button>
+        <button type="button" data-chat-id="29be9f88-c422-8f69-8000-0969abfc6912">
+          <strong>发布计划</strong>
+          <span>2026年02月02日</span>
+          <p>这是发布计划摘要...</p>
+        </button>
+        <button type="button" data-chat-id="39be9f88-c422-8f69-8000-0969abfc6913">
+          <strong>远程工作限制</strong>
+          <span>2026年01月20日</span>
+          <p>这是历史会话预览...</p>
+        </button>
+      </section>
+    </div>
   </body>
 </html>

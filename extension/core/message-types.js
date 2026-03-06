@@ -1,0 +1,8 @@
+// [Input] popup/background/content 之间的消息协议定义。
+// [Output] 统一消息类型常量，避免跨层字符串漂移。
+// [Pos] 扩展跨上下文通信协议共享层。
+export const START_EXPORT_MESSAGE = "KIMI_EXPORT_START";
+export const RUN_API_ONLY_MESSAGE = "KIMI_EXPORT_API_ONLY";
+export const DISCOVER_ALL_HISTORY_ENTRIES_MESSAGE = "KIMI_DISCOVER_ALL_HISTORY_ENTRIES";
+export const EXTRACT_CURRENT_CHAT_MESSAGE = "KIMI_EXTRACT_CURRENT_CHAT";
+export const DISCOVER_UI_ENTRIES_MESSAGE = DISCOVER_ALL_HISTORY_ENTRIES_MESSAGE;
