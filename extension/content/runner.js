@@ -1,8 +1,7 @@
-// [Input] 后台发来的 API 导出、history 发现与正文提取消息。
-// [Output] 标准化消息响应（API ZIP、历史会话引用列表、当前会话正文）。
+// [Input] 后台发来的 history 发现与正文提取消息。
+// [Output] 标准化消息响应（历史会话引用列表、当前会话正文）。
 // [Pos] 内容脚本执行入口与动态动作装配层。
 (() => {
-  const RUN_API_ONLY_MESSAGE = "KIMI_EXPORT_API_ONLY";
   const DISCOVER_ALL_HISTORY_ENTRIES_MESSAGE = "KIMI_DISCOVER_ALL_HISTORY_ENTRIES";
   const EXTRACT_CURRENT_CHAT_MESSAGE = "KIMI_EXTRACT_CURRENT_CHAT";
 
@@ -33,10 +32,6 @@
   function resolveAction(message) {
     if (!message || typeof message.type !== "string") {
       return null;
-    }
-
-    if (message.type === RUN_API_ONLY_MESSAGE) {
-      return () => invokeAction("runApiOnlyExport");
     }
 
     if (message.type === DISCOVER_ALL_HISTORY_ENTRIES_MESSAGE) {

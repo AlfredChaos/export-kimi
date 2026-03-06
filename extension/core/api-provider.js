@@ -1,4 +1,4 @@
-// [Input] Kimi页面上下文的fetch能力与鉴权相关本地状态。
+// [Input] Kimi页面上下文的fetch能力与localStorage鉴权token（access_token/refresh_token）。
 // [Output] 通过私有接口抓取的标准化会话与消息集合。
 // [Pos] 方案C的API优先数据源实现。
 import { createLogger } from "./logger.js";
@@ -172,12 +172,17 @@ export function buildDefaultHeaders(windowObj = window) {
 
     const device = findStorageValue(pairs, /device/i);
     const session = findStorageValue(pairs, /(session|token)/i);
+    // Kimi API 需要 Authorization: Bearer 鉴权头，优先 access_token，其次 refresh_token
+    const authToken = findAuthToken(pairs);
 
     if (device) {
       headers["x-msh-device-id"] = device;
     }
     if (session) {
       headers["x-msh-session-id"] = session;
+    }
+    if (authToken) {
+      headers["authorization"] = `Bearer ${authToken}`;
     }
   } catch (_error) {
     // localStorage 读取失败时继续使用默认请求头。
@@ -300,6 +305,39 @@ function extractTextValue(rawValue) {
   }
 
   return normalizeText(nested.join("\n"));
+}
+
+function findAuthToken(pairs) {
+  // Kimi 将鉴权 token 存于 localStorage，按优先级尝试不同 key
+  const tokenKeys = ["access_token", "refresh_token"];
+  for (const targetKey of tokenKeys) {
+    for (const [key, value] of pairs) {
+      if (key !== targetKey || !value) {
+        continue;
+      }
+      return parseTokenValue(value);
+    }
+  }
+  return "";
+}
+
+function parseTokenValue(raw) {
+  if (!raw) {
+    return "";
+  }
+  const trimmed = raw.trim();
+  // Kimi 可能将 token 存为 JSON 数组，用 "." 拼接
+  if (trimmed.startsWith("[")) {
+    try {
+      const arr = JSON.parse(trimmed);
+      if (Array.isArray(arr)) {
+        return arr.filter(Boolean).join(".");
+      }
+    } catch (_error) {
+      // 非法 JSON，按原值使用
+    }
+  }
+  return trimmed;
 }
 
 function findStorageValue(pairs, pattern) {

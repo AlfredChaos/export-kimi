@@ -38,10 +38,9 @@ test("manifest exposes dynamic import modules for content runner", () => {
   );
 });
 
-test("runner defines api/discovery/extract message types", () => {
+test("runner defines discovery/extract message types", () => {
   const source = fs.readFileSync("extension/content/runner.js", "utf8");
 
-  assert.match(source, /KIMI_EXPORT_API_ONLY/);
   assert.match(source, /KIMI_DISCOVER_ALL_HISTORY_ENTRIES/);
   assert.match(source, /KIMI_EXTRACT_CURRENT_CHAT/);
 });
